@@ -1,22 +1,22 @@
 :warning: Everything between << >> needs to be replaced (remove << >> after replacing)
 # CS110 Project Proposal
-# << Project Title >>
+# Choose Your Own Adventure: Binghamton Freshman Year 
 ## CS 110 Final Project
-### << Semester, Year >>
+### Fall, 2022 
 ### [Assignment Description](https://docs.google.com/document/d/1H4R6yLL7som1lglyXWZ04RvTp_RvRFCCBn6sqv-82ps/edit?usp=sharing)
 
-<< [repl](#) >>
+https://replit.com/join/oiweiazppp-jackhunter9 
 
 << [link to demo presentation slides](#) >>
 
-### Team: << team name >>
-#### << Team Members >>
+### Team: Green 
+#### Jack Hunter & Lily Thorne 
 
 ***
 
 ## Project Description
 
-<< Give an overview of your project >>
+Navigate life as a first year student at Binghamton Univeristy. Every choice you makes come with a consequence, so decide carefully. Live any type of life you want!
 
 ***    
 
