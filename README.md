@@ -42,7 +42,28 @@ Navigate life as a first year student at Binghamton Univeristy. Every choice you
     * << A simple drawing that shows the class relationships in your code (see below for an example). This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm. >>
         * ![class diagram](assets/class_diagram.jpg) 
 * Classes
-    * << You should have a list of each of your classes with a description. >>
+
+1. < Class Player > 
+    * __init__
+        * < Initializes the player object with characteristics: health xpos ypos direction speed image and rect >
+    * moveRight
+        * < Allows the player to move in the right direction >
+    * moveLeft
+        * < Allows the player to move in the left direction >
+    * moveUp
+        * < Allows the player to move upwards >
+    * moveDown
+        * < Allows the player to move down >
+    * attack
+        * < Utilizes the Sprite class to shoot an object in a certain direction   >
+
+2. < Class Sprite >
+   * __init__
+       * < Initializes the sprite object with characteristics: speed xpos and ypos >
+    * moveUpDown
+        * < Allows the sprite to move in either the upwards or downwards directions >
+    * moveLeftRight
+        * < Allows the sprite to move in either the left or right directions > 
 
 ## Project Structure and File List
 
