@@ -63,7 +63,22 @@ Navigate life as a first year student at Binghamton Univeristy. Every choice you
     * moveUpDown
         * < Allows the sprite to move in either the upwards or downwards directions >
     * moveLeftRight
-        * < Allows the sprite to move in either the left or right directions > 
+        * < Allows the sprite to move in either the left or right directions >
+        
+3.  < Class Enemy > 
+    * __init__
+        * < Initializes the enemy object with characteristics:  xpos ypos speed image and rect >
+    * move
+        * < Allows the enemy to move back and forth>
+    * die
+        * < Enemy object leaves the screen if the player comes into contact with it   >
+
+4.  < Class Walls > 
+    * __init__
+        * < Initializes the Wall object with characteristics:  xpos ypos height width and rect >
+    * makeWall
+        * < Makes a wall object on the screen>
+  
 
 ## Project Structure and File List
 
