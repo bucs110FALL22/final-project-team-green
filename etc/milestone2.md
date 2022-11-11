@@ -12,12 +12,15 @@ Come up with interfaces for 3 possible classes you think you may need for your p
 ## Class Interface 1
 
 class Player:
-  def __init__ (self, name, major, age):
+  def __init__ (self, name, major, age, x, y):
     self.name= name
     self.major= major
     self.age= age
     self.year= "freshman"
-    self.classes= []
+    self.xpos= x
+    self.ypos= y
+    self.dialogue= ""
+    
   
 
 ## Class Interface 2
