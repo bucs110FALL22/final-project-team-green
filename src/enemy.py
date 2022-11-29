@@ -1,6 +1,6 @@
 import pygame
 import random
-from src.sprtie import Player
+from src.sprtie import Sprite
 from src.walls import Walls
 from src.graphical import Graphical
 
@@ -35,10 +35,10 @@ class Enemy(pygame.sprite.Sprite):
    
     def die(self, x, y):
       '''
-      if enemy and player come into contact, enemy dies
+      if player throws an object at the enemy and theycome into contact, enemy dies
        args: (self, x, y) self initializes the enemy object, x is the x position on screen, y is the y position on screen
        returns : None
       '''
-      if self.x in Player.x and self.y in Player.y:
+      if self.x in Sprite.x and self.y in Sprite.y:
         self.image= None
           
