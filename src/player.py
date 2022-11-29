@@ -1,21 +1,17 @@
 import pygame
-from sprite import Sprite
 
-class Player(pygame.sprite.Sprite):
+class Player():
   def __init__(self, x, y):
     '''
     initializes the player object
     args: (self, x, y) self used to initialize characteristics of the player, x and y used for positional purposes
     returns: None
     '''
-    super().__init__(self)
-    self.health = 100
-    self.xpos = x
-    self.ypos = y
-    self.direction = ""
-    self.speed = 3 #Num pixels moving
-    self.image = pygame.image.load("assets/Student.png")
-    self.rect = self.image.get_rect()
+    self.x = x
+    self.y = y
+    self.speed = 2
+    self.image = pygame.image.load("assets/student.png")
+    self.image = pygame.transform.scale(self.image, (35, 35))
 
   #All movement methods will be used in conjunction with KEYDOWN events, so as long as a user holds, the player moves
   def moveRight(self):
@@ -24,8 +20,7 @@ class Player(pygame.sprite.Sprite):
     args: (self) self allows the player object's x position be updated
     returns: None
     '''
-    self.xpos = self.xpos + self.speed
-    self.direction = "Right"
+    self.x = self.x + self.speed
 
   def moveLeft(self):
     '''
@@ -33,8 +28,7 @@ class Player(pygame.sprite.Sprite):
     args: (self) self allows the player object's x position to be updated
     returns: None
     '''
-    self.xpos = self.xpos - self.speed
-    self.direction = "Left"
+    self.x = self.x - self.speed
 
   def moveUp(self):
     '''
@@ -42,8 +36,7 @@ class Player(pygame.sprite.Sprite):
     args: (self) self allows the player object's y position to be updated
     returns: None
     '''
-    self.ypos = self.ypos - self.speed #In pygame, decreasing speed moves the object upwards
-    self.direction = "Up"
+    self.y = self.y - self.speed
 
   def moveDown(self):
     '''
@@ -51,21 +44,4 @@ class Player(pygame.sprite.Sprite):
     args: (self) self allows the player object's y position to be updated
     returns: None
     '''
-    self.ypos = self.ypos + self.speed
-    self.direction = "Down"
-
-  def attack(self, choice):
-    '''
-    creates the sprite object to be used for "attacks"
-    args: (self, choice) self allows the "directoin" charactersitic to be used, and choice dtermines the direction the sprite moves in
-    returns: None
-    '''
-    projectile = Sprite(choice, self.x, self.y)
-    if(self.direction == "Right"):
-      projectile.moveLeftRight(1)
-    elif(self.direction == "Left"):
-      projectile.moveLeftRight(2)
-    elif(self.direction == "Up"):
-      projectile.moveUpDown(1)
-    elif(self.direction == "Down"):
-      projectile.moveUpDown(2)
+    self.y = self.y + self.speed
