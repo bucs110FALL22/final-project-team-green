@@ -42,7 +42,7 @@ class Controller:
           elif event.key == pygame.K_LEFT:
             user.moveLeft()
 
-        game_window.makeMaze(level)
-        game_window.drawMaze()
-        game_window.window.blit(user.image, (user.x, user.y))
-        pygame.display.flip()
+          game_window.makeMaze(level)
+          game_window.drawMaze()
+          game_window.window.blit(user.image, (user.x, user.y))
+          pygame.display.flip()
