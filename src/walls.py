@@ -10,5 +10,4 @@ class Walls():
     def makeWall(self, display, color):
         self.rect= pygame.Rect(self.x, self.y, self.width, self.height)
         pygame.draw.rect(display, color, self.rect)
-        pygame.display.flip()
    
