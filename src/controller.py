@@ -34,13 +34,58 @@ class Controller:
       for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
           if event.key == pygame.K_UP:
-            user.moveUp()
+            #Repeated code for functionalitiy purposes
+            block = False
+            count = 0
+            for i in range(len(game_window.xboundaries)):
+              if(count % 2 == 1):
+                if((user.y <= game_window.yboundaries[i-1]) & (user.y >= game_window.yboundaries[i]) & (user.x >= game_window.xboundaries[i-1]) & (user.x <= game_window.xboundaries[i])):
+                  block = True
+                  continue
+              count += 1
+            if(block == False):
+              user.moveUp()
+            elif(block == True):
+              continue
           elif event.key == pygame.K_RIGHT:
-            user.moveRight()
+            block = False
+            count = 0
+            for i in range(len(game_window.xboundaries2)):
+              if(count % 2 == 1):
+                if((user.y <= game_window.yboundaries2[i-1]) & (user.y >= game_window.yboundaries2[i]) & (user.x >= game_window.xboundaries2[i-1]) & (user.x <= game_window.xboundaries2[i])):
+                  block = True
+                  continue
+              count += 1
+            if(block == False):
+              user.moveRight()
+            elif(block == True):
+              continue
           elif event.key == pygame.K_DOWN:
-            user.moveDown()
+            block = False
+            count = 0
+            for i in range(len(game_window.xboundaries3)):
+              if(count % 2 == 1):
+                if((user.y <= game_window.yboundaries3[i-1]) & (user.y >= game_window.yboundaries3[i]) & (user.x >= game_window.xboundaries3[i-1]) & (user.x <= game_window.xboundaries3[i])):
+                  block = True
+                  continue
+              count += 1
+            if(block == False):
+              user.moveDown()
+            elif(block == True):
+              continue
           elif event.key == pygame.K_LEFT:
-            user.moveLeft()
+            block = False
+            count = 0
+            for i in range(len(game_window.xboundaries4)):
+              if(count % 2 == 1):
+                if((user.y <= game_window.yboundaries4[i-1]) & (user.y >= game_window.yboundaries4[i]) & (user.x >= game_window.xboundaries4[i-1]) & (user.x <= game_window.xboundaries4[i])):
+                  block = True
+                  continue
+              count += 1
+            if(block == False):
+              user.moveLeft()
+            elif(block == False):
+              continue
 
           game_window.makeMaze(level)
           game_window.drawMaze()
