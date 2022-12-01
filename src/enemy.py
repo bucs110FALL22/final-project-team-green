@@ -1,19 +1,15 @@
 import pygame
 import random
-from src.sprtie import Sprite
 from src.walls import Walls
-from src.graphical import Graphical
 
-class Enemy(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__(self)
+class Enemy():
+    def __init__(self, x, y):
         self.x= x
         self.y= y
         self.image = pygame.image.load("assets/enemy.png")
-        self.rect = self.image.get_rect()
-        self.speed = random.randrange(1,5)
+        self.image = pygame.transform.scale(self.image, (35, 35))
 
-    def generate(self, x, y):
+    def generate(self):
         '''
         puts the enemy in a randomly generated position
         args: (self, x, y) self initializes the enemy object, x is the x position on screen, y is the y position on screen

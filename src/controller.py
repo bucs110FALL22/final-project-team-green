@@ -1,6 +1,7 @@
 import pygame
 from src.graphical import Graphical
 from src.player import Player
+from src.enemy import Enemy
 
 class Controller:
   def __init__(self):
@@ -21,10 +22,18 @@ class Controller:
         level = 1
         chose_mode = True
 
+    #Initializing scene
     game_window = Graphical("white")
     game_window.makeMaze(level)
     game_window.drawMaze()
-
+    
+    #Add barriers for enemies 
+    enemy1 = Enemy(185, 405)
+    game_window.window.blit(enemy1.image, (enemy1.x, enemy1.y))
+    enemy2 = Enemy(125, 285)
+    game_window.window.blit(enemy2.image, (enemy2.x, enemy2.y))
+    enemy3 = Enemy(286, 190)
+    game_window.window.blit(enemy3.image, (enemy3.x, enemy3.y))
     user = Player(302, 502)
     game_window.window.blit(user.image, (user.x, user.y))
     pygame.display.flip()
@@ -87,7 +96,11 @@ class Controller:
             elif(block == False):
               continue
 
+          #Redrawing scene
           game_window.makeMaze(level)
           game_window.drawMaze()
           game_window.window.blit(user.image, (user.x, user.y))
+          game_window.window.blit(enemy1.image, (enemy1.x, enemy1.y))
+          game_window.window.blit(enemy2.image, (enemy2.x, enemy2.y))
+          game_window.window.blit(enemy3.image, (enemy3.x, enemy3.y))
           pygame.display.flip()

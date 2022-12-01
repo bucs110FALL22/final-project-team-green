@@ -1,6 +1,7 @@
 import pygame
 from src.walls import Walls
 
+
 class Graphical:
   def __init__(self, color):
     self.window = pygame.display.set_mode((600, 600)) #Blank surface
@@ -93,6 +94,10 @@ class Graphical:
       twentyone.makeWall(self.surface, self.mazecolor)
       twentytwo = Walls(446, 170, 56, 20)
       twentytwo.makeWall(self.surface, self.mazecolor)
+      entrance = Walls(302, 502, 40, 40)
+      entrance.makeWall(self.surface, self.color)
+      exit = Walls(442, 86, 40, 40)
+      exit.makeWall(self.surface, self.color)
 
       #Establishing hitbox values
 
