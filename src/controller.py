@@ -11,13 +11,13 @@ class Controller:
     menu.makeMenu()
     chose_mode = False
     while(chose_mode == False): #Runs until a level is chosen
-      search = True #Event loop getting mouse click coordinates
+      search = True #getting mouse click coordinates
       while(search == True):
         for event in pygame.event.get():
           if event.type == pygame.MOUSEBUTTONDOWN:
             (x, y) = pygame.mouse.get_pos()
             search = False
-      if((x > 75) & (x < 175) & (y > 250) & (y < 300)):
+      if((x > 230) & (x < 385) & (y > 250) & (y < 285)):
         level = 1
         chose_mode = True
 
