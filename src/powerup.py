@@ -20,14 +20,14 @@ class Powerup():
       self.rect = self.image.get_rect()
       self.rect.x = random.randrange(102, 472)
       self.rect.y = random.randrange(102, 472)
-      self.x = self.rect.x
-      self.y = self.rect.y
+      spot = False
       for i in range(len(window.wallList)):
         spot = self.rect.colliderect(window.wallList[i])
         if(spot == True):
           continue
-        else:
-          possible  = True
+      if(spot == False):
+        possible = True
+    
 
   def getObj(self, window):
     window.window.blit(self.image, (self.rect.x, self.rect.y))

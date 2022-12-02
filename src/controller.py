@@ -115,13 +115,30 @@ class Controller:
               item3.getObj(game_window)
               pygame.display.flip()
 
+
       elif((x > 185) & (x < 415) & (y > 305) & (y < 340)):
         controls_window = Graphical("white")
         controls_window.makeControls()
         pygame.display.flip()
+        in_screen = True
+        while(in_screen == True):
+          for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+              if event.key == pygame.K_ESCAPE:
+                in_screen = False
+                self.mainloop()
+                pygame.display.flip()
       
 
       elif((x > 150) & (x < 450) & (y > 385) & (y < 420)):
         score_window = Graphical("white")
         score_window.makeScoreboard()
         pygame.display.flip()
+        in_screen = True
+        while(in_screen == True):
+          for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+              if event.key == pygame.K_ESCAPaE:
+                in_screen = False
+                self.mainloop()
+                pygame.display.flip()
