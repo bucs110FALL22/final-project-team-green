@@ -101,22 +101,11 @@ class Graphical:
 
       #Establishing hitbox values
 
-      #For UP arrow key (get rid of magic values)
-      self.xboundaries = [147, 416, 189, 416, 189, 267, 371, 502, 291, 466, 102, 278, 165, 402, 413, 502, 105, 154, 67, 123, 196, 406]
-      self.yboundaries = [342, 322, 402, 382, 462, 442, 462, 442, 282, 262, 282, 262, 190, 170, 190, 170,222, 202, 209, 189, 122, 102]
+      self.wallList = [one.rect, two.rect, three.rect, four.rect, five.rect, six.rect, seven.rect, eight.rect, nine.rect, ten.rect, eleven.rect, twelve.rect, thirteen.rect, fourteen.rect, fifteen.rect, sixteen.rect, seventeen.rect, eighteen.rect, nineteen.rect, twenty.rect, twentyone.rect, twentytwo.rect]
 
-      #For RIGHT arrow keys (get rid of magic values)
-      self.xboundaries2 = [307, 327, 367, 387, 185, 205, 247, 267, 185, 205, 427, 447, 287, 307, 227, 247, 103, 123, 103, 123, 163, 183, 411, 431, 447, 467]
-      self.yboundaries2 = [600, 407, 460, 382, 460, 407, 502, 438, 400, 347, 458, 262, 281, 196, 281, 196, 220, 174, 174, 107, 188, 102, 188, 135, 102, 190]
-
-    #For DOWN arrow keys (get rid of magic values)
-    self.xboundaries3 = [307, 358, 187, 298, 187, 418, 127, 418, 402, 439, 322, 502, 98, 270, 229, 278, 289, 338, 98, 138, 106, 154, 208, 402, 414, 482]
-    self.yboundaries3 = [427, 405, 427, 405, 357, 345, 305, 285, 427, 405, 252, 225, 252, 225, 219, 192, 219, 192, 189, 154, 138, 105, 170, 133, 170, 133]
-
-    #For LEFT arrow keys (get rid of magic values)
-    self.xboundaries4 = [282, 300, 351, 359, 172, 180, 414, 420, 414, 420, 116, 120, 276, 280, 336, 340, 152, 156, 212, 216, 400, 404, 436, 440]
-    self.yboundaries4 = [600, 407, 502, 407, 502, 322, 442, 348, 340, 288, 502, 262, 281, 195, 261, 195, 220, 108, 170, 122, 188, 136, 128, 102]
-      
 
   def drawMaze(self):
     self.window.blit(self.surface, (0,0))
+
+  #def makeControls(self):
+    

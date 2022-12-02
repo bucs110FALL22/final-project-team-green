@@ -1,6 +1,6 @@
 import pygame
 import random
-from src.walls import Walls
+from src.pencil import Pencil
 
 class Enemy():
     def __init__(self, x, y):
@@ -9,32 +9,24 @@ class Enemy():
         self.image = pygame.image.load("assets/enemy.png")
         self.image = pygame.transform.scale(self.image, (35, 35))
 
-    def generate(self):
-        '''
-        puts the enemy in a randomly generated position
-        args: (self, x, y) self initializes the enemy object, x is the x position on screen, y is the y position on screen
-        returns: None
-        '''
-        self.x= random.randrange(Walls.width)
-        self.y= random.randrange(Walls.height)
-
-    def move(self, x, y):
-        '''
-        enemy moves back and forth within the maze (like in pacman)
-        args: (self, x, y) self initializes the enemy object, x is the x position on screen, y is the y position on screen
-        returns: None
-        '''
-        while Walls.insidex != self.x and Walls.insidey != self.y:
-          #pos of enemy is not touching a wall of the maze:
-           self.x= self.x-10 #or to wherever a wall is
-           self.x= self.x+10 #back to starting
-   
-    def die(self, x, y):
+    def moveSide(self, distance):
       '''
-      if player throws an object at the enemy and theycome into contact, enemy dies
-       args: (self, x, y) self initializes the enemy object, x is the x position on screen, y is the y position on screen
+      enemy moves side to side going from it's starting point, then to the right a certain distance, and then moves back to its starting spot
+       args: (self, distance) self initializes the enemy object, distance is the distance to the right that the enemy moves
        returns : None
       '''
-      if self.x in Sprite.x and self.y in Sprite.y:
+      while self.x != self.x+distance:
+        self.x = self.x+1
+      if self.x == self.x+distance:
+        while self.x != self.x-distance:
+          self.x = self.x-1
+         
+    def die(self, sprite):
+      '''
+      if player throws an object at the enemy and theycome into contact, enemy dies
+       args: (self, x, y) self initializes the enemy object
+       returns : None
+      '''
+      if sprite.x == self.x and sprite.y == self.y:
         self.image= None
           

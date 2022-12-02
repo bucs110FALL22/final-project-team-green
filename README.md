@@ -1,6 +1,6 @@
 :warning: Everything between << >> needs to be replaced (remove << >> after replacing)
 # CS110 Project Proposal
-# Choose Your Own Adventure: Binghamton Freshman Year 
+# School is a Maze 
 ## CS 110 Final Project
 ### Fall, 2022 
 ### [Assignment Description](https://docs.google.com/document/d/1H4R6yLL7som1lglyXWZ04RvTp_RvRFCCBn6sqv-82ps/edit?usp=sharing)
@@ -16,7 +16,7 @@ https://replit.com/join/oiweiazppp-jackhunter9
 
 ## Project Description
 
-Navigate life as a first year student at Binghamton Univeristy. Every choice you makes come with a consequence, so decide carefully. Live any type of life you want!
+Navigate your way through a maze as a student as fast as you can and try to avoid or defeat professors blocking your way!
 
 ***    
 
@@ -34,10 +34,12 @@ Navigate life as a first year student at Binghamton Univeristy. Every choice you
 ## Program Design
 
 * Non-Standard libraries
-    * << You should have a list of any additional libraries or modules used (pygame, request) beyond non-standard python. 
-         For each additional module you should include
-         - url for the module documentation
-         - a short description of the module >>
+    *Pygame
+      -https://www.pygame.org/
+      - Pygame is a module for Python that helps you create games and other multimedia applications
+
+    *
+  
 * Class Interface Design
     * << A simple drawing that shows the class relationships in your code (see below for an example). This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm. >>
         * ![class diagram](assets/class_diagram.jpg) 
@@ -86,11 +88,19 @@ The Project is broken down into the following file structure:
 
 * main.py
 * src
-    * << all of your python files should go here >>
+    * controller.py
+    * enemy.py
+    * graphical.py
+    * player.py
+    * sprite.py
+    * walls.py
 * assets
-    * << all of your media, i.e. images, font files, etc, should go here) >>
+    * class_diagram.jpg
+    * enemy.png
+    * pencil.png
+    * student.png
 * etc
-    * << This is a catch all folder for things that are not part of your project, but you want to keep with your project >>
+    * milestone2.md
 
 ***
 
@@ -100,12 +110,14 @@ The Project is broken down into the following file structure:
 
 ## Testing
 
-* << Describe your testing strategy for your project. >>
+* We would test the program by writing bits of code as testing and debugging as we went
 
 ## ATP
 
 | Step                 |Procedure             |Expected Results                   |
 |----------------------|:--------------------:|----------------------------------:|
-|  1                   | Run Counter Program  |GUI window appears with count = 0  |
+|  1                   | Navigate to Shell,   |Game window opens to screen that   |
+                       |type "python3 main.py"|reads "Welcome to the Maze"        |
+                       |and hit enter         |                                   |
 |  2                   | click count button   | display changes to count = 1      |
-etc...
+

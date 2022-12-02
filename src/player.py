@@ -12,6 +12,9 @@ class Player():
     self.speed = 2
     self.image = pygame.image.load("assets/student.png")
     self.image = pygame.transform.scale(self.image, (35, 35))
+    self.rect = self.image.get_rect()
+    self.rect.x = self.x
+    self.rect.y = self.y
 
   #All movement methods will be used in conjunction with KEYDOWN events, so as long as a user holds, the player moves
   def moveRight(self):
@@ -20,7 +23,8 @@ class Player():
     args: (self) self allows the player object's x position be updated
     returns: None
     '''
-    self.x = self.x + self.speed
+    self.x += self.speed
+    self.rect.x += self.speed
 
   def moveLeft(self):
     '''
@@ -28,7 +32,8 @@ class Player():
     args: (self) self allows the player object's x position to be updated
     returns: None
     '''
-    self.x = self.x - self.speed
+    self.x -= self.speed
+    self.rect.x -= self.speed
 
   def moveUp(self):
     '''
@@ -36,7 +41,8 @@ class Player():
     args: (self) self allows the player object's y position to be updated
     returns: None
     '''
-    self.y = self.y - self.speed
+    self.y -= self.speed
+    self.rect.y -= self.speed
 
   def moveDown(self):
     '''
@@ -44,4 +50,37 @@ class Player():
     args: (self) self allows the player object's y position to be updated
     returns: None
     '''
-    self.y = self.y + self.speed
+    self.y += self.speed
+    self.rect.y -= self.speed
+
+  def detectWall(self, window, direction):
+    self.rect.x = self.x
+    self.rect.y = self.y
+    for i in range(len(window.wallList)):
+      collide = self.rect.colliderect(window.wallList[i])
+      if(collide == True):
+        break
+    return collide, direction
+
+  def movement(self, block, location, direction):
+    if(block == True):
+      if(direction == location):
+        pass
+      else:
+        if(direction == "Up"):
+          self.moveUp()
+        elif(direction == "Right"):
+          self.moveRight()
+        elif(direction == "Down"):
+          self.moveDown()
+        elif(direction == "Left"):
+          self.moveLeft()
+    else:
+      if(direction == "Up"):
+        self.moveUp()
+      elif(direction == "Right"):
+        self.moveRight()
+      elif(direction == "Down"):
+        self.moveDown()
+      elif(direction == "Left"):
+        self.moveLeft()
