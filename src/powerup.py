@@ -7,22 +7,21 @@ class Powerup():
     if(self.obj == 1):
       self.image = pygame.image.load("assets/backpack.png")
       self.image = pygame.transform.scale(self.image, (30, 30))
-      self.rect = self.image.get_rect()
     elif(self.obj == 2):
       self.image = pygame.image.load("assets/calculator.png")
       self.image = pygame.transform.scale(self.image, (30, 30))
-      self.rect = self.image.get_rect()
     elif(self.obj == 3):
       self.image = pygame.image.load("assets/apple.png")
       self.image = pygame.transform.scale(self.image, (30, 30))
-      self.rect = self.image.get_rect()
 
   def getCoords(self, window):
     possible = False
     while(possible == False):
       self.rect = self.image.get_rect()
-      self.rect.x = random.randrange(102, 468)
-      self.rect.y = random.randrange(102, 468)
+      self.rect.x = random.randrange(102, 472)
+      self.rect.y = random.randrange(102, 472)
+      self.x = self.rect.x
+      self.y = self.rect.y
       for i in range(len(window.wallList)):
         spot = self.rect.colliderect(window.wallList[i])
         if(spot == True):
