@@ -92,6 +92,8 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
         * <creates the maze using Walls>
     * drawMaze
         * <creates the maze on the window>
+    * makeControls
+        * <creates the control screen on the window>
      * backToMenu
         * <if user presses return key, the game returns to the menu screen>
         

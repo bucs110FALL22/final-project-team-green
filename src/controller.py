@@ -102,6 +102,9 @@ class Controller:
                 user.detectItem(game_window, items)
                 last_direction = "Left"
                 user.movement(block, location, last_direction)
+              elif event.key == pygame.K_ESCAPE:
+                self.mainloop()
+                pygame.display.flip()
                 
               #Redrawing scene
               game_window.makeMaze(level)
@@ -116,7 +119,7 @@ class Controller:
         controls_window = Graphical("white")
         controls_window.makeControls()
         pygame.display.flip()
-        controls_window.backToMenu()
+      
 
       elif((x > 150) & (x < 450) & (y > 385) & (y < 420)):
         score_window = Graphical("white")

@@ -205,9 +205,4 @@ class Graphical:
       self.window.blit(display_mes, (scorex, scorey))
       scorey += 46   
 
-  def backToMenu(self):
-    for event in pygame.event.get():
-      if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_RETURN:
-          self.makeMenu()
-          pygame.display.flip()
+ 
