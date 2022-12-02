@@ -162,9 +162,10 @@ The Project is broken down into the following file structure:
      * Database
      * Player
      * Graphical
+     * Controller functionality
    * Lily-
      * Walls
-   * Collaborative
+     * Collaborative
      * Powerup
      * Controller
    
