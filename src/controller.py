@@ -14,6 +14,7 @@ class Controller:
     highscores = Database()
     menu = Graphical("black")
     menu.makeMenu()
+
     chose_mode = False
     while(chose_mode == False): #Runs until a level is chosen
       search = True #getting mouse click coordinates
@@ -22,6 +23,7 @@ class Controller:
           if event.type == pygame.MOUSEBUTTONDOWN:
             (x, y) = pygame.mouse.get_pos()
             search = False
+          
       if((x > 225) & (x < 375) & (y > 225) & (y < 260)):
         #Initializing scene
         level = 1
@@ -114,6 +116,7 @@ class Controller:
         controls_window = Graphical("white")
         controls_window.makeControls()
         pygame.display.flip()
+        controls_window.backToMenu()
 
       elif((x > 150) & (x < 450) & (y > 385) & (y < 420)):
         score_window = Graphical("white")

@@ -1,4 +1,4 @@
-import pygame
+pimport pygame
 
 class Player():
   def __init__(self, x, y):

@@ -128,6 +128,7 @@ class Graphical:
     display_mes = self.font.render(message4, True, self.textcolor)
     self.window.blit(display_mes, (75, 325))
 
+
   def makeScoreboard(self):
     self.window.fill(self.mazecolor)
     message = "SCOREBOARD"
@@ -203,3 +204,10 @@ class Graphical:
       display_mes = self.scorefont.render(str(bestscores[i]) + " seconds", True, self.textcolor)
       self.window.blit(display_mes, (scorex, scorey))
       scorey += 46   
+
+  def backToMenu(self):
+    for event in pygame.event.get():
+      if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_RETURN:
+          self.makeMenu()
+          pygame.display.flip()

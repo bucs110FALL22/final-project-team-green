@@ -61,22 +61,21 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
     * movement
         * < Allows the player object to move based on keys >
 
-2. < Class Pencil >
+2. < Class Controller >
    * __init__
-       * < Initializes the sprite object with characteristics: xpos and ypos >
-    * updateDirection
-        * < Rotates the pencil image >
-    * updatePos
-        * < changes the x and y positions on the Pencil object on the window >
+       * < Initializes the Controller object>
+    * mainloop
+        * < Runs the game >
+
    
         
-3.  < Class Enemy > 
+3.  < Class Powerup > 
     * __init__
-        * < Initializes the enemy object with characteristics:  xpos ypos  >
-    * moveSide
-        * < Allows the enemy to move side to side>
-    * die
-        * < Enemy object leaves the screen if the player comes into contact with it   >
+        * < Initializes the powerup object >
+    * getCoords
+        * < Checks the coordinates of the powerup object compared to Walls>
+    * getObj
+        * < Puts the powerup object on the window   >
 
 4.  < Class Walls > 
     * __init__
@@ -93,12 +92,25 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
         * <creates the maze using Walls>
     * drawMaze
         * <creates the maze on the window>
-
+     * backToMenu
+        * <if user presses return key, the game returns to the menu screen>
+        
 6.  < Class Keyboard > 
     * __init__
         * < Initializes the Keyboard object with characteristics:  xpos ypos >
 
-    
+7. < Class Database >
+   * __init__
+       * < Initializes the database object >
+    * addData
+        * < saves data into the repl database >
+        
+8. < Class puzzle >
+   * __init__
+        * < Initializes the Puzzle object with characteristics:  xpos ypos >
+   
+
+       
 ## Project Structure and File List
 
 The Project is broken down into the following file structure:
@@ -106,15 +118,18 @@ The Project is broken down into the following file structure:
 * main.py
 * src
     * controller.py
-    * enemy.py
+    * database.py
     * graphical.py
-    * player.py
-    * sprite.py
-    * walls.py
     * keyboard.py
+    * player.py
+    * powerup.py
+    * puzzle.py
+    * walls.py
 * assets
     * class_diagram.jpg
-    * enemy.png
+    * apple.png
+    * backpack.png
+    * calculator.png
     * pencil.png
     * student.png
     * keyboard.png
@@ -136,7 +151,33 @@ The Project is broken down into the following file structure:
 | Step                 |Procedure             |Expected Results                   |
 |----------------------|:--------------------:|----------------------------------:|
 |  1                   | Navigate to Shell,   |Game window opens to screen that   |
-|                      |type "python3 main.py"|reads "Welcome to the Maze"        |
-|                      |and hit enter         |                                   |
-|  2                   | click count button   | display changes to count = 1      |
-
+|                      |type "python3 main.py"|reads "Welcome to the Maze",       |
+|                      |and hit enter         |"Enter", "Control", and "Scoreboard"|
+|  2                   | click "Control"      | displays control screen with      |  |                      |                      | directions on what keys to press  |  |                      |                      | to move the player                |
+|  3                   |press return key on   |window returns to menu screen      |
+|                      |  keybord             |                                   |
+|  4                   |click "Scoreboard"    |displays scoreboard screen with    |
+|                      |                      |  score rankings                   |
+|  5                   |press return key on   |window returns to menu screen      |
+|                      |  keybord             |                                   |  
+|  6                   |click "Enter"         |displays maze screen and user can  |
+|                      |                      |  begin playing                    |
+|  7                   |press up arrow key    |player moves up 2px                |
+|                      | on keyboard          |                                   |
+|  8                   |press down arrow key  |player moves down 2 px             |
+|                      |   on keyboard        |                                   |
+|  9                   |press left arrow key  |player moves left 2 px             |
+|                      |   on keyboard        |                                   |
+|  10                  |press right arrow key |player moves right 2 px            |
+|                      |   on keyboard        |                                   |
+|  11                  |using arrow keys,     |when player reaches a powerup, the |
+|                      |navigate player to a  |powerup disappears and player gains|
+|                      |powerup in the maze   | 5 points                          |
+|                      |(backpack, calculator,|                                   |
+|                      | or apple)            |                                   |
+|  12                  |player is navigated   |scoreboard screen is shown with    |
+|                      |to the end of the maze|time ranks and users score is      |
+|                      |                      | displayed under the scoreboard.   |
+|                      |                      | if user makes it onto the         |
+|                      |                      | scoreboard, their score will      |
+|                      |                      | appear there as well              |
