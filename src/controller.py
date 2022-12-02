@@ -4,6 +4,7 @@ import time
 from src.graphical import Graphical
 from src.player import Player
 from src.enemy import Enemy
+from src.database import Database
 from src.pencil import Pencil
 
 class Controller:
@@ -11,6 +12,7 @@ class Controller:
     pygame.init()
 
   def mainloop(self):
+    highscores = Database()
     menu = Graphical("black")
     menu.makeMenu()
     chose_mode = False
@@ -52,10 +54,27 @@ class Controller:
                   continue
                 elif((user.y <= 102) & (user.x >= 442)):
                   #Bring up scoreboard, add victory message
-                  game_window.makeScoreboard()
+                  moving = False
+                  pygame.time.wait(3000)
                   end_time = time.time()
                   difference = end_time-start_time
-                  print(difference)
+                  difference = round(difference, 4)
+                  keylist = []
+                  for key in highscores.db.keys():
+                    keylist.append(key)
+                  iters = len(keylist)
+                  greatest = keylist[0]
+                  for i in range(0, iters):
+                    if(int(keylist[i]) > (int(greatest))):
+                      greatest = keylist[i]
+
+                  greatest = int(greatest)
+                  highscores.addData((str(greatest+1)), difference)
+                  game_window.makeScoreboard()
+
+                  game_window.scorefont = pygame.font.Font("assets/arcade.ttf", 40)
+                  victory = game_window.scorefont.render("Your time is: " + str(difference) + " seconds", True, game_window.textcolor)
+                  game_window.window.blit(victory, (82, 485))
                   pygame.display.flip()
                   break
                 last_direction = "Up"

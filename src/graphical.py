@@ -2,6 +2,7 @@ import pygame
 from src.walls import Walls
 from src.keyboard import Keyboard
 from src.puzzle import Puzzle
+from src.database import Database
 
 
 class Graphical:
@@ -170,4 +171,35 @@ class Graphical:
       rect_four = Walls(largechartx+4, largecharty+4, largechartw-8, largecharth-8)
       rect_four.makeWall(self.window, self.mazecolor)
       largecharty += (largecharth-4)
-      
+
+    self.scorefont = pygame.font.Font("assets/arcade.ttf", 40)
+    message = "Rank"
+    message2 = "Time"
+    display_mes = self.scorefont.render(message, True, self.textcolor)
+    self.window.blit(display_mes, (115,158))
+    display_mes = self.scorefont.render(message2, True, self.textcolor)
+    self.window.blit(display_mes, (310, 158))
+
+    numx = 143
+    numy = 203
+    num = 1
+    for i in range(6):
+      message = str(num)
+      display_mes = self.scorefont.render(message, True, self.textcolor)
+      self.window.blit(display_mes, (numx, numy))
+      numy += 46
+      num += 1
+    
+
+    highscores = Database()
+    bestscores = []
+    for key in highscores.db.keys():
+      bestscores.append(highscores.db[key])
+
+    bestscores = sorted(bestscores)
+    scorex = 230
+    scorey = 203
+    for i in range(6):
+      display_mes = self.scorefont.render(str(bestscores[i]) + " seconds", True, self.textcolor)
+      self.window.blit(display_mes, (scorex, scorey))
+      scorey += 46   
