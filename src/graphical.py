@@ -1,6 +1,7 @@
 import pygame
 from src.walls import Walls
 from src.keyboard import Keyboard
+from src.puzzle import Puzzle
 
 
 class Graphical:
@@ -10,24 +11,24 @@ class Graphical:
     self.color = color
     self.mazecolor = (69, 139, 0)
     self.font = pygame.font.Font("assets/dungeon.ttf", 40)
+    self.textcolor = "black"
 
   def makeMenu(self):
     
     #Initialize menu screen + Message
-    text_color = "black"
     self.window.fill(self.mazecolor)
     message1 = "Welcome to THE MAZE"
     message2 = "Enter"
     message3 = "Controls"
     message4 = "Scoreboard"
 
-    display_mes = self.font.render(message1, True, text_color)
+    display_mes = self.font.render(message1, True, self.textcolor)
     self.window.blit(display_mes, (35, 160))
-    display_mes = self.font.render(message2, True, text_color)
+    display_mes = self.font.render(message2, True, self.textcolor)
     self.window.blit(display_mes, (230, 240))
-    display_mes = self.font.render(message3, True, text_color)
+    display_mes = self.font.render(message3, True, self.textcolor)
     self.window.blit(display_mes, (190, 320))
-    display_mes = self.font.render(message4, True, text_color)
+    display_mes = self.font.render(message4, True, self.textcolor)
     self.window.blit(display_mes, (160, 400))
 
 
@@ -111,6 +112,23 @@ class Graphical:
     self.window.blit(self.surface, (0,0))
 
   def makeControls(self):
-    self.window.fill("white")
-    movement_control = Keyboard(100, 100)
-    self.window.blit(movement_control, (movement_control.x, movement_control.y))
+    self.window.fill(self.mazecolor)
+    movement_control = Keyboard(200, 70)
+    self.window.blit(movement_control.image, (movement_control.x, movement_control.y))
+    self.font = pygame.font.Font("assets/dungeon.ttf", 25)
+    piece = Puzzle(275, 310)
+    self.window.blit(piece.image, (piece.x, piece.y))
+    
+    message = "Move up"
+    message2 = "Move right"
+    message3 = "Move down"
+    message4 = "Move left"
+
+    display_mes = self.font.render(message, True, self.textcolor)
+    self.window.blit(display_mes, (240, 275))
+    display_mes = self.font.render(message2, True, self.textcolor)
+    self.window.blit(display_mes, (375, 325))
+    display_mes = self.font.render(message3, True, self.textcolor)
+    self.window.blit(display_mes, (220, 375))
+    display_mes = self.font.render(message4, True, self.textcolor)
+    self.window.blit(display_mes, (75, 325))

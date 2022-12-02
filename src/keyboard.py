@@ -5,4 +5,4 @@ class Keyboard():
     self.x = x
     self.y = y
     self.image = pygame.image.load("assets/keyboard.png")
-    self.image = pygame.transform.scale(self.image, (35, 35))
+    self.image = pygame.transform.scale(self.image, (200, 139))
