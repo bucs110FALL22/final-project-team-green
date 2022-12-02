@@ -11,27 +11,21 @@ class Graphical:
     self.color = color
     self.mazecolor = (69, 139, 0)
     self.font = pygame.font.Font("assets/dungeon.ttf", 40)
+    self.scorefont = pygame.font.Font("assets/arcade.ttf", 100)
     self.textcolor = "black"
 
   def makeMenu(self):
     
     #Initialize menu screen + Message
     self.window.fill(self.mazecolor)
-    message1 = "Welcome to THE MAZE"
-    message2 = "Enter"
-    message3 = "Controls"
-    message4 = "Scoreboard"
-
-    display_mes = self.font.render(message1, True, self.textcolor)
-    self.window.blit(display_mes, (35, 160))
-    display_mes = self.font.render(message2, True, self.textcolor)
-    self.window.blit(display_mes, (230, 240))
-    display_mes = self.font.render(message3, True, self.textcolor)
-    self.window.blit(display_mes, (190, 320))
-    display_mes = self.font.render(message4, True, self.textcolor)
-    self.window.blit(display_mes, (160, 400))
-
-
+    messages = ["Welcome to the maze", "Enter", "Controls", "Scoreboard"]
+    starty = 160
+    count = 80
+    for i in range(len(messages)):
+      display_mes = self.font.render(messages[i], True, self.textcolor)
+      display_mes_rect = display_mes.get_rect(center = (300, starty))
+      self.window.blit(display_mes, display_mes_rect)
+      starty += count
     pygame.display.flip()
 
   def makeMaze(self, level):
@@ -84,7 +78,7 @@ class Graphical:
       fourteen.makeWall(self.surface, self.mazecolor)
       fifteen = Walls(102, 189, 56, 20)
       fifteen.makeWall(self.surface, self.mazecolor)
-      sixteen = Walls(138, 142, 20, 88)
+      sixteen = Walls(138, 142, 20, 80)
       sixteen.makeWall(self.surface, self.mazecolor)
       seventeen = Walls(198, 102, 244, 20)
       seventeen.makeWall(self.surface, self.mazecolor)
@@ -132,3 +126,48 @@ class Graphical:
     self.window.blit(display_mes, (220, 375))
     display_mes = self.font.render(message4, True, self.textcolor)
     self.window.blit(display_mes, (75, 325))
+
+  def makeScoreboard(self):
+    self.window.fill(self.mazecolor)
+    message = "SCOREBOARD"
+    display_mes = self.scorefont.render(message, True, self.textcolor)
+    display_mes_rect = display_mes.get_rect(center = (600/2, 100))
+    self.window.blit(display_mes, display_mes_rect)
+    outside = Walls(100, 150, 400, 326)
+    outside.makeWall(self.window, self.textcolor)
+    inside = Walls(104, 154, 392, 318)
+    inside.makeWall(self.window, self.mazecolor)
+    
+    smallchartx = 100
+    smallcharty = 150
+    smallchartw = 100
+    smallcharth = 50
+    num_boxes = 7
+
+    largechartx = 196
+    largecharty = 150
+    largechartw = 304
+    largecharth = 50
+    
+    rect_one = Walls(100, 150, 100, 50)
+    rect_one.makeWall(self.window, self.textcolor)
+    rect_two = Walls(104, 154, 92, 42)
+    rect_two.makeWall(self.window, self.mazecolor)
+    rect1 = Walls(100, 196, 100, 50)
+    rect1.makeWall(self.window, self.textcolor)
+    rect2 = Walls(104, 200, 92, 42)
+    rect2.makeWall(self.window, self.mazecolor)
+    
+
+    for i in range(num_boxes):
+      rect_one = Walls(smallchartx, smallcharty, smallchartw, smallcharth)
+      rect_one.makeWall(self.window, self.textcolor)
+      rect_two = Walls(smallchartx+4, smallcharty+4, smallchartw-8, smallcharth-8)
+      rect_two.makeWall(self.window, self.mazecolor)
+      smallcharty += (smallcharth-4)
+      rect_three = Walls(largechartx, largecharty, largechartw, largecharth)
+      rect_three.makeWall(self.window, self.textcolor)
+      rect_four = Walls(largechartx+4, largecharty+4, largechartw-8, largecharth-8)
+      rect_four.makeWall(self.window, self.mazecolor)
+      largecharty += (largecharth-4)
+      

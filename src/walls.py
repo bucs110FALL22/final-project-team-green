@@ -6,8 +6,8 @@ class Walls():
         self.y= y
         self.width= w
         self.height= h
+        self.rect= pygame.Rect(self.x, self.y, self.width, self.height)
 
     def makeWall(self, display, color):
-        self.rect= pygame.Rect(self.x, self.y, self.width, self.height)
         pygame.draw.rect(display, color, self.rect)
    
