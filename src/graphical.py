@@ -1,5 +1,6 @@
 import pygame
 from src.walls import Walls
+from src.keyboard import Keyboard
 
 
 class Graphical:
@@ -28,11 +29,13 @@ class Graphical:
     self.window.blit(display_mes, (190, 320))
     display_mes = self.font.render(message4, True, text_color)
     self.window.blit(display_mes, (160, 400))
+
+
     pygame.display.flip()
 
   def makeMaze(self, level):
     self.window.fill(self.color)
-    pygame.display.flip()
+
 
     outsidex = 100
     outsidey = 100
@@ -107,5 +110,7 @@ class Graphical:
   def drawMaze(self):
     self.window.blit(self.surface, (0,0))
 
-  #def makeControls(self):
-    
+  def makeControls(self):
+    self.window.fill("white")
+    movement_control = Keyboard(100, 100)
+    self.window.blit(movement_control, (movement_control.x, movement_control.y))

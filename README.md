@@ -41,13 +41,13 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
     *
   
 * Class Interface Design
-    * << A simple drawing that shows the class relationships in your code (see below for an example). This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm. >>
+    * 
         * ![class diagram](assets/class_diagram.jpg) 
 * Classes
 
 1. < Class Player > 
     * __init__
-        * < Initializes the player object with characteristics: health xpos ypos direction speed image and rect >
+        * < Initializes the player object with characteristics: xpos ypos >
     * moveRight
         * < Allows the player to move in the right direction >
     * moveLeft
@@ -56,32 +56,49 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
         * < Allows the player to move upwards >
     * moveDown
         * < Allows the player to move down >
-    * attack
-        * < Utilizes the Sprite class to shoot an object in a certain direction   >
+    * detectWall
+        * < Checks to see if the Player object collided with a Wall object >
+    * movement
+        * < Allows the player object to move based on keys >
 
-2. < Class Sprite >
+2. < Class Pencil >
    * __init__
-       * < Initializes the sprite object with characteristics: speed xpos and ypos >
-    * moveUpDown
-        * < Allows the sprite to move in either the upwards or downwards directions >
-    * moveLeftRight
-        * < Allows the sprite to move in either the left or right directions >
+       * < Initializes the sprite object with characteristics: xpos and ypos >
+    * updateDirection
+        * < Rotates the pencil image >
+    * updatePos
+        * < changes the x and y positions on the Pencil object on the window >
+   
         
 3.  < Class Enemy > 
     * __init__
-        * < Initializes the enemy object with characteristics:  xpos ypos speed image and rect >
-    * move
-        * < Allows the enemy to move back and forth>
+        * < Initializes the enemy object with characteristics:  xpos ypos  >
+    * moveSide
+        * < Allows the enemy to move side to side>
     * die
         * < Enemy object leaves the screen if the player comes into contact with it   >
 
 4.  < Class Walls > 
     * __init__
-        * < Initializes the Wall object with characteristics:  xpos ypos height width and rect >
+        * < Initializes the Wall object with characteristics:  xpos ypos height and width>
     * makeWall
         * < Makes a wall object on the screen>
-  
 
+5. < Class Graphical > 
+    * __init__
+        * < Initializes the graphical object with characteristic: color >
+    * makeMenu
+        * <generates the menu screen>
+    * makeMaze
+        * <creates the maze using Walls>
+    * drawMaze
+        * <creates the maze on the window>
+
+6.  < Class Keyboard > 
+    * __init__
+        * < Initializes the Keyboard object with characteristics:  xpos ypos >
+
+    
 ## Project Structure and File List
 
 The Project is broken down into the following file structure:
@@ -94,11 +111,13 @@ The Project is broken down into the following file structure:
     * player.py
     * sprite.py
     * walls.py
+    * keyboard.py
 * assets
     * class_diagram.jpg
     * enemy.png
     * pencil.png
     * student.png
+    * keyboard.png
 * etc
     * milestone2.md
 
@@ -117,7 +136,7 @@ The Project is broken down into the following file structure:
 | Step                 |Procedure             |Expected Results                   |
 |----------------------|:--------------------:|----------------------------------:|
 |  1                   | Navigate to Shell,   |Game window opens to screen that   |
-                       |type "python3 main.py"|reads "Welcome to the Maze"        |
-                       |and hit enter         |                                   |
+|                      |type "python3 main.py"|reads "Welcome to the Maze"        |
+|                      |and hit enter         |                                   |
 |  2                   | click count button   | display changes to count = 1      |
 
