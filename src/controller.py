@@ -3,9 +3,8 @@ import time
 
 from src.graphical import Graphical
 from src.player import Player
-from src.enemy import Enemy
 from src.database import Database
-from src.pencil import Pencil
+from src.powerup import Powerup
 
 class Controller:
   def __init__(self):
@@ -30,20 +29,23 @@ class Controller:
         game_window.makeMaze(level)
         game_window.drawMaze()
         start_time = time.time()
-    
-        #Add barriers for enemies 
-        enemy1 = Enemy(185, 405)
-        game_window.window.blit(enemy1.image, (enemy1.x, enemy1.y))
-        enemy2 = Enemy(125, 285)
-        game_window.window.blit(enemy2.image, (enemy2.x, enemy2.y))
-        enemy3 = Enemy(286, 190)
-        game_window.window.blit(enemy3.image, (enemy3.x, enemy3.y))
         user = Player(302, 502) #Set to 302, 502 for final
+        item = Powerup()
+        item.getCoords(game_window)
+        item.getObj(game_window)
+        item2 = Powerup()
+        item2.getCoords(game_window)
+        item2.getObj(game_window)
+        item3 = Powerup()
+        item3.getCoords(game_window)
+        item3.getObj(game_window)
+        items = [item.rect, item2.rect, item3.rect]
         game_window.window.blit(user.image, (user.x, user.y))
         pygame.display.flip()
-
         last_direction = "Up"
         #attack = False
+
+        total_points = 0
         moving = True
         while(moving == True):
           for event in pygame.event.get():
@@ -58,6 +60,7 @@ class Controller:
                   pygame.time.wait(3000)
                   end_time = time.time()
                   difference = end_time-start_time
+                  difference = difference - user.points
                   difference = round(difference, 4)
                   keylist = []
                   for key in highscores.db.keys():
@@ -67,49 +70,44 @@ class Controller:
                   for i in range(0, iters):
                     if(int(keylist[i]) > (int(greatest))):
                       greatest = keylist[i]
-
                   greatest = int(greatest)
                   highscores.addData((str(greatest+1)), difference)
                   game_window.makeScoreboard()
-
                   game_window.scorefont = pygame.font.Font("assets/arcade.ttf", 40)
                   victory = game_window.scorefont.render("Your time is: " + str(difference) + " seconds", True, game_window.textcolor)
                   game_window.window.blit(victory, (82, 485))
                   pygame.display.flip()
+                  print(total_points)
                   break
+                user.detectItem(game_window, items)      
                 last_direction = "Up"
                 user.movement(block, location, last_direction)
               elif event.key == pygame.K_RIGHT:
                 if(user.x >= 467):
                   continue
+                user.detectItem(game_window, items)
                 last_direction = "Right"
                 user.movement(block, location, last_direction)
               elif event.key == pygame.K_DOWN:
                 if((user.y >= 467) & ((user.x <= 300) or (user.x >= 310))):
                   continue
+                user.detectItem(game_window, items)
                 last_direction = "Down"
                 user.movement(block, location, last_direction)
               elif event.key == pygame.K_LEFT:
                 if(user.x <= 102):
                   continue
+                user.detectItem(game_window, items)
                 last_direction = "Left"
                 user.movement(block, location, last_direction)
-              #elif event.key == pygame.K_SPACE:
-                #sprite = Pencil(user.x, user.y)
-                #sprite.updateDirection(last_direction)
-                #attack = True
-
+                
               #Redrawing scene
               game_window.makeMaze(level)
               game_window.drawMaze()
-              game_window.window.blit(user.image, (user.x, user.y))
-              game_window.window.blit(enemy1.image, (enemy1.x, enemy1.y))
-              game_window.window.blit(enemy2.image, (enemy2.x, enemy2.y))
-              game_window.window.blit(enemy3.image, (enemy3.x, enemy3.y))
-              #while(attack == True):
-                #sprite.updatePos(last_direction)
-                #game_window.window.blit(sprite.image, (sprite.x, sprite.y))
-            
+              game_window.window.blit(user.image, (user.x, user.y))  
+              item.getObj(game_window)
+              item2.getObj(game_window)
+              item3.getObj(game_window)
               pygame.display.flip()
 
       elif((x > 185) & (x < 415) & (y > 305) & (y < 340)):

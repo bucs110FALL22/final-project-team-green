@@ -15,8 +15,9 @@ class Player():
     self.rect = self.image.get_rect()
     self.rect.x = self.x
     self.rect.y = self.y
+    self.points = 0
 
-  #All movement methods will be used in conjunction with KEYDOWN events, so as long as a user holds, the player moves
+  #All movement methods will be used in conjunction with KEYDOWN events, so as long as a user pressesp, the player moves
   def moveRight(self):
     '''
     allows the player to move in the right direction
@@ -84,3 +85,13 @@ class Player():
         self.moveDown()
       elif(direction == "Left"):
         self.moveLeft()
+
+  def detectItem(self, window, items):
+    for i in range(len(items)):
+      hit_item = self.rect.colliderect(items[i])
+      if(hit_item == True):
+        cover = pygame.Rect(items[i].x, items[i].y, 30, 30)
+        items[i].x = -40
+        items[i].y = -40
+        self.points += 5
+        
