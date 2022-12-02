@@ -7,7 +7,7 @@
 
 https://replit.com/join/oiweiazppp-jackhunter9 
 
-<< [link to demo presentation slides](#) >>
+[Presentation Slides](https://docs.google.com/presentation/d/1rDUOnalMx9VGvmmdmZGzVPruuD_RRKa3Ap9rmwXWC5I/edit?usp=sharing)
 
 ### Team: Green 
 #### Jack Hunter & Lily Thorne 
@@ -23,11 +23,18 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
 ## User Interface Design
 
 - **Initial Concept**
-  - << A wireframe or drawing of the user interface concept along with a short description of the interface. You should have one for each screen in your program. For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components. >>
+  - ![menu sketch](assets/concept_sketches/menu_sketch.png) 
+  - ![maze sketch](assets/concept_sketches/maze_sketch.PNG)
+  - ![controls sketch](assets/concept_sketches/controls_sketch.png) 
     
     
 - **Final GUI**
-  - << You should also have a screenshot of each screen for your final GUI >>
+  - ![menu screen](assets/GUI_screens/menu_screen.png)
+  - ![controls screen](assets/GUI_screens/controls_screen.png)
+  - ![scoreboard screen](assets/GUI_screens/scoreboard_screen.png)
+  - ![maze screen](assets/GUI_screens/maze_screen.png)
+  - ![end scorebard screen](assets/GUI_screens/scoreboard_screen_end.png)
+  - 
 
 ***        
 
@@ -42,7 +49,7 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
   
 * Class Interface Design
     * 
-        * ![class diagram](assets/class_diagram.jpg) 
+        * ![class diagram](assets/class_diagram.png) 
 * Classes
 
 1. < Class Player > 
@@ -94,9 +101,7 @@ Navigate your way through a maze as a student as fast as you can and try to avoi
         * <creates the maze on the window>
     * makeControls
         * <creates the control screen on the window>
-     * backToMenu
-        * <if user presses return key, the game returns to the menu screen>
-        
+    
 6.  < Class Keyboard > 
     * __init__
         * < Initializes the Keyboard object with characteristics:  xpos ypos >
@@ -127,6 +132,7 @@ The Project is broken down into the following file structure:
     * powerup.py
     * puzzle.py
     * walls.py
+    * esc.py
 * assets
     * class_diagram.jpg
     * apple.png
@@ -135,6 +141,16 @@ The Project is broken down into the following file structure:
     * pencil.png
     * student.png
     * keyboard.png
+    * concept_sketches (FOLDER)
+      * controls_sketch.png
+      * maze_sketch.png
+      * menu_sketch.png
+    * GUI_screens (FOLDER)
+      * controls_screen.png
+      * maze_screen.png
+      * menu_screen.png
+      * scoreboard_screen.png
+      * scoreboard_screen_end.png
 * etc
     * milestone2.md
 
@@ -142,7 +158,16 @@ The Project is broken down into the following file structure:
 
 ## Tasks and Responsibilities 
 
-   * Outline the team member roles and who was responsible for each class/method, both individual and collaborative.
+   * Jack-
+     * Database
+     * Player
+     * Graphical
+   * Lily-
+     * Walls
+   * Collaborative
+     * Powerup
+     * Controller
+   
 
 ## Testing
 
@@ -152,34 +177,14 @@ The Project is broken down into the following file structure:
 
 | Step                 |Procedure             |Expected Results                   |
 |----------------------|:--------------------:|----------------------------------:|
-|  1                   | Navigate to Shell,   |Game window opens to screen that   |
-|                      |type "python3 main.py"|reads "Welcome to the Maze",       |
-|                      |and hit enter         |"Enter", "Control", and "Scoreboard"|
-|  2                   | click "Control"      | displays control screen with      |  |                      |                      | directions on what keys to press  |  |                      |                      | to move the player                |
-|  3                   |press return key on   |window returns to menu screen      |
-|                      |  keybord             |                                   |
-|  4                   |click "Scoreboard"    |displays scoreboard screen with    |
-|                      |                      |  score rankings                   |
-|  5                   |press return key on   |window returns to menu screen      |
-|                      |  keybord             |                                   |  
-|  6                   |click "Enter"         |displays maze screen and user can  |
-|                      |                      |  begin playing                    |
-|  7                   |press up arrow key    |player moves up 2px                |
-|                      | on keyboard          |                                   |
-|  8                   |press down arrow key  |player moves down 2 px             |
-|                      |   on keyboard        |                                   |
-|  9                   |press left arrow key  |player moves left 2 px             |
-|                      |   on keyboard        |                                   |
-|  10                  |press right arrow key |player moves right 2 px            |
-|                      |   on keyboard        |                                   |
-|  11                  |using arrow keys,     |when player reaches a powerup, the |
-|                      |navigate player to a  |powerup disappears and player gains|
-|                      |powerup in the maze   | 5 points                          |
-|                      |(backpack, calculator,|                                   |
-|                      | or apple)            |                                   |
-|  12                  |player is navigated   |scoreboard screen is shown with    |
-|                      |to the end of the maze|time ranks and users score is      |
-|                      |                      | displayed under the scoreboard.   |
-|                      |                      | if user makes it onto the         |
-|                      |                      | scoreboard, their score will      |
-|                      |                      | appear there as well              |
+|  1                   | Navigate to Shell, type "python3 main.py" and hit enter  |Game window opens to screen that reads "Welcome to the Maze", "Enter", "Control", and "Scoreboard" |
+|  2                   | click "Control"      | displays control screen with     directions on what keys to press to move the player                |
+|  3                   |press esc button on screen   |window returns to menu screen|
+|  4                   |click "Scoreboard"    |displays scoreboard screen with score rankings  |
+|  5                   |click "Enter"         |displays maze screen and user can begin playing |
+|  6                   |press up arrow key on keyboard   |player moves up 2px|
+|  7                   |press down arrow key on keyboard   |player moves down 2px|
+|  8                   |press left arrow key on keyboard   |player moves left 2px|
+|  9                   |press right arrow key on keyboard   |player moves right 2px|
+|  10                  |using arrow keys, navigate player to a powerup in the maze (backpack, calculator, or apple)  |when player reaches a powerup, the powerup disappears and player gains 5 points |
+|  11                  |player is navigated to the end of the maze  |scoreboard screen is shown with time ranks and users score is  displayed under the scoreboard. if user makes it onto the scoreboard, their score will appear there as well  |

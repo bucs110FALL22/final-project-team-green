@@ -3,6 +3,7 @@ from src.walls import Walls
 from src.keyboard import Keyboard
 from src.puzzle import Puzzle
 from src.database import Database
+from src.esc import EscKey
 
 
 class Graphical:
@@ -108,11 +109,13 @@ class Graphical:
 
   def makeControls(self):
     self.window.fill(self.mazecolor)
-    movement_control = Keyboard(200, 70)
+    movement_control = Keyboard(200, 30)
     self.window.blit(movement_control.image, (movement_control.x, movement_control.y))
     self.font = pygame.font.Font("assets/dungeon.ttf", 25)
-    piece = Puzzle(275, 310)
+    piece = Puzzle(270, 310)
     self.window.blit(piece.image, (piece.x, piece.y))
+    esc_control = EscKey(242, 150)
+    self.window.blit(esc_control.image, (esc_control.x, esc_control.y))
     
     message = "Move up"
     message2 = "Move right"
@@ -120,13 +123,13 @@ class Graphical:
     message4 = "Move left"
 
     display_mes = self.font.render(message, True, self.textcolor)
-    self.window.blit(display_mes, (240, 275))
+    self.window.blit(display_mes, (237, 275))
     display_mes = self.font.render(message2, True, self.textcolor)
-    self.window.blit(display_mes, (375, 325))
+    self.window.blit(display_mes, (372, 325))
     display_mes = self.font.render(message3, True, self.textcolor)
-    self.window.blit(display_mes, (220, 375))
+    self.window.blit(display_mes, (217, 375))
     display_mes = self.font.render(message4, True, self.textcolor)
-    self.window.blit(display_mes, (75, 325))
+    self.window.blit(display_mes, (72, 325))
 
 
   def makeScoreboard(self):
