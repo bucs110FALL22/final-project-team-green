@@ -54,15 +54,17 @@ class Controller:
         end_ypos = 442
         user = Player(start_xpos, start_ypos) #Set to 302, 502 for final
         item = Powerup()
-        item.getCoords(game_window)
-        item.getObj(game_window)
+        itemx = 160
+        itemy = 190
+        item.getObj(game_window, itemx, itemy)
         item2 = Powerup()
-        item2.getCoords(game_window)
-        item2.getObj(game_window)
+        item2x = 410
+        item2y = 465
+        item2.getObj(game_window, item2x, item2y)
         item3 = Powerup()
-        item3.getCoords(game_window)
-        item3.getObj(game_window)
-        items = [item.rect, item2.rect, item3.rect]
+        item3x = 200
+        item3y = 285
+        item3.getObj(game_window, item3x, item3y)
         game_window.window.blit(user.image, (user.x, user.y))
         pygame.display.flip()
         last_direction = "Up"
