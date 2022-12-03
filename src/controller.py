@@ -23,15 +23,36 @@ class Controller:
           if event.type == pygame.MOUSEBUTTONDOWN:
             (x, y) = pygame.mouse.get_pos()
             search = False
-          
-      if((x > 225) & (x < 375) & (y > 225) & (y < 260)):
+
+
+      scorebound1 = 150
+      scorebound2 = 450
+      scorebound3 = 385
+      scorebound4 = 420
+      controlbound1 = 185
+      controlbound2 = 415
+      controlbound3 = 305
+      controlbound4 = 340
+      menubound1 = 225
+      menubound2 = 375
+      menubound3 = 225
+      menubound4 = 260
+      rightborder = 467
+      leftborder = 102
+      startleft = 300
+      startright = 310
+      if((x > menubound1) & (x < menubound2) & (y > menubound3) & (y < menubound4)):
         #Initializing scene
         level = 1
         game_window = Graphical("white")
         game_window.makeMaze(level)
         game_window.drawMaze()
         start_time = time.time()
-        user = Player(302, 502) #Set to 302, 502 for final
+        start_xpos = 302
+        start_ypos = 502
+        end_xpos = 102
+        end_ypos = 442
+        user = Player(start_xpos, start_ypos) #Set to 302, 502 for final
         item = Powerup()
         item.getCoords(game_window)
         item.getObj(game_window)
@@ -54,12 +75,13 @@ class Controller:
             if event.type == pygame.KEYDOWN:
               block, location = user.detectWall(game_window, last_direction)       
               if event.key == pygame.K_UP:
-                if((user.y <= 102) & (user.x <= 442)):
+                if((user.y <= end_xpos) & (user.x <= end_ypos)):
                   continue
-                elif((user.y <= 102) & (user.x >= 442)):
+                elif((user.y <= end_xpos) & (user.x >= end_ypos)):
                   #Bring up scoreboard, add victory message
                   moving = False
-                  pygame.time.wait(3000)
+                  wait_time = 3000
+                  pygame.time.wait(wait_time)
                   end_time = time.time()
                   difference = end_time-start_time
                   difference = difference - user.points
@@ -75,9 +97,12 @@ class Controller:
                   greatest = int(greatest)
                   highscores.addData((str(greatest+1)), difference)
                   game_window.makeScoreboard()
-                  game_window.scorefont = pygame.font.Font("assets/arcade.ttf", 40)
+                  scoresize = 40
+                  game_window.scorefont = pygame.font.Font("assets/arcade.ttf", scoresize)
                   victory = game_window.scorefont.render("Your time is: " + str(difference) + " seconds", True, game_window.textcolor)
-                  game_window.window.blit(victory, (82, 485))
+                  scoreposx = 82
+                  scoreposy = 485
+                  game_window.window.blit(victory, (scoreposx, scoreposy))
                   pygame.display.flip()
                   print(total_points)
                   break
@@ -85,19 +110,19 @@ class Controller:
                 last_direction = "Up"
                 user.movement(block, location, last_direction)
               elif event.key == pygame.K_RIGHT:
-                if(user.x >= 467):
+                if(user.x >= rightborder):
                   continue
                 user.detectItem(game_window, items)
                 last_direction = "Right"
                 user.movement(block, location, last_direction)
               elif event.key == pygame.K_DOWN:
-                if((user.y >= 467) & ((user.x <= 300) or (user.x >= 310))):
+                if((user.y >= rightborder) & ((user.x <= startleft) or (user.x >= startright))):
                   continue
                 user.detectItem(game_window, items)
                 last_direction = "Down"
                 user.movement(block, location, last_direction)
               elif event.key == pygame.K_LEFT:
-                if(user.x <= 102):
+                if(user.x <= leftborder):
                   continue
                 user.detectItem(game_window, items)
                 last_direction = "Left"
@@ -116,7 +141,7 @@ class Controller:
               pygame.display.flip()
 
 
-      elif((x > 185) & (x < 415) & (y > 305) & (y < 340)):
+      elif((x > controlbound1) & (x < controlbound2) & (y > controlbound3) & (y < controlbound4)):
         controls_window = Graphical("white")
         controls_window.makeControls()
         pygame.display.flip()
@@ -130,7 +155,7 @@ class Controller:
                 pygame.display.flip()
       
 
-      elif((x > 150) & (x < 450) & (y > 385) & (y < 420)):
+      elif((x > scorebound1) & (x < scorebound2) & (y > scorebound3) & (y < scorebound4)):
         score_window = Graphical("white")
         score_window.makeScoreboard()
         pygame.display.flip()
@@ -138,7 +163,7 @@ class Controller:
         while(in_screen == True):
           for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
-              if event.key == pygame.K_ESCAPaE:
+              if event.key == pygame.K_ESCAPE:
                 in_screen = False
                 self.mainloop()
                 pygame.display.flip()

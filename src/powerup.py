@@ -18,8 +18,10 @@ class Powerup():
     possible = False
     while(possible == False):
       self.rect = self.image.get_rect()
-      self.rect.x = random.randrange(102, 472)
-      self.rect.y = random.randrange(102, 472)
+      leftbound = 102
+      rightboun = 472
+      self.rect.x = random.randrange(leftbound, rightbound)
+      self.rect.y = random.randrange(leftbound, rightbound)
       spot = False
       for i in range(len(window.wallList)):
         spot = self.rect.colliderect(window.wallList[i])

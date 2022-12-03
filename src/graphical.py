@@ -8,12 +8,16 @@ from src.esc import EscKey
 
 class Graphical:
   def __init__(self, color):
-    self.window = pygame.display.set_mode((600, 600)) #Blank surface
-    self.surface = pygame.display.set_mode((600,600)) #Maze surface
+    self.width = 600
+    self.height = 600
+    self.window = pygame.display.set_mode((self.width, self.height)) #Blank surface
+    self.surface = pygame.display.set_mode((self.width, self.height)) #Maze surface
     self.color = color
     self.mazecolor = (69, 139, 0)
-    self.font = pygame.font.Font("assets/dungeon.ttf", 40)
-    self.scorefont = pygame.font.Font("assets/arcade.ttf", 100)
+    dungeonsize = 40
+    arcadesize = 100
+    self.font = pygame.font.Font("assets/dungeon.ttf", dungeonsize)
+    self.scorefont = pygame.font.Font("assets/arcade.ttf", arcadesize)
     self.textcolor = "black"
 
   def makeMenu(self):
@@ -25,7 +29,7 @@ class Graphical:
     count = 80
     for i in range(len(messages)):
       display_mes = self.font.render(messages[i], True, self.textcolor)
-      display_mes_rect = display_mes.get_rect(center = (300, starty))
+      display_mes_rect = display_mes.get_rect(center = (self.width/2, starty))
       self.window.blit(display_mes, display_mes_rect)
       starty += count
     pygame.display.flip()
@@ -109,34 +113,55 @@ class Graphical:
 
   def makeControls(self):
     self.window.fill(self.mazecolor)
-    movement_control = Keyboard(200, 30)
+    keyx = 200
+    keyy = 30
+    movement_control = Keyboard(keyx, keyy)
     self.window.blit(movement_control.image, (movement_control.x, movement_control.y))
-    self.font = pygame.font.Font("assets/dungeon.ttf", 25)
-    piece = Puzzle(270, 310)
+    dungeonsize = 25
+    self.font = pygame.font.Font("assets/dungeon.ttf", dungeonsize)
+    piecex = 268
+    piecey = 310
+    piece = Puzzle(piecex, piecey)
     self.window.blit(piece.image, (piece.x, piece.y))
-    esc_control = EscKey(242, 150)
+    esckeyx = 240
+    esckeyy = 150
+    esc_control = EscKey(esckeyx, esckeyy)
     self.window.blit(esc_control.image, (esc_control.x, esc_control.y))
     
     message = "Move up"
     message2 = "Move right"
     message3 = "Move down"
     message4 = "Move left"
+    message5 = "Return to previous"
 
     display_mes = self.font.render(message, True, self.textcolor)
-    self.window.blit(display_mes, (237, 275))
+    upx = 237
+    upy = 275
+    self.window.blit(display_mes, (upx, upy))
     display_mes = self.font.render(message2, True, self.textcolor)
-    self.window.blit(display_mes, (372, 325))
+    rightx = 372
+    righty = 325
+    self.window.blit(display_mes, (rightx, righty))
     display_mes = self.font.render(message3, True, self.textcolor)
-    self.window.blit(display_mes, (217, 375))
+    downx = 217
+    downy = 375
+    self.window.blit(display_mes, (downx, downy))
     display_mes = self.font.render(message4, True, self.textcolor)
-    self.window.blit(display_mes, (72, 325))
+    leftx = 72
+    lefty = 325
+    self.window.blit(display_mes, (leftx, lefty))
+    display_mes = self.font.render(message5, True, self.textcolor)
+    prevx = 145
+    prevy = 425
+    self.window.blit(display_mes, (prevx, prevy))
 
 
   def makeScoreboard(self):
     self.window.fill(self.mazecolor)
     message = "SCOREBOARD"
     display_mes = self.scorefont.render(message, True, self.textcolor)
-    display_mes_rect = display_mes.get_rect(center = (600/2, 100))
+    scorey = 100
+    display_mes_rect = display_mes.get_rect(center = (self.width/2, scorey))
     self.window.blit(display_mes, display_mes_rect)
     outside = Walls(100, 150, 400, 326)
     outside.makeWall(self.window, self.textcolor)
@@ -176,23 +201,30 @@ class Graphical:
       rect_four.makeWall(self.window, self.mazecolor)
       largecharty += (largecharth-4)
 
-    self.scorefont = pygame.font.Font("assets/arcade.ttf", 40)
+    arcadesize = 40
+    self.scorefont = pygame.font.Font("assets/arcade.ttf", arcadesize)
     message = "Rank"
     message2 = "Time"
+    rankx = 115
+    ranky = 158
     display_mes = self.scorefont.render(message, True, self.textcolor)
-    self.window.blit(display_mes, (115,158))
+    self.window.blit(display_mes, (rankx, ranky))
+    timex = 310
+    timey = 158
     display_mes = self.scorefont.render(message2, True, self.textcolor)
-    self.window.blit(display_mes, (310, 158))
+    self.window.blit(display_mes, (timex, timey))
 
     numx = 143
     numy = 203
     num = 1
+    diff1 = 46
+    diff2 = 1
     for i in range(6):
       message = str(num)
       display_mes = self.scorefont.render(message, True, self.textcolor)
       self.window.blit(display_mes, (numx, numy))
-      numy += 46
-      num += 1
+      numy += diff1
+      num += diff2
     
 
     highscores = Database()
@@ -206,6 +238,4 @@ class Graphical:
     for i in range(6):
       display_mes = self.scorefont.render(str(bestscores[i]) + " seconds", True, self.textcolor)
       self.window.blit(display_mes, (scorex, scorey))
-      scorey += 46   
-
- 
+      scorey += diff1   
